@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>teaching.reactor</artifactId>
+        <groupId>fr.liglab.adele.icasa.teaching</groupId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- DESCRIPTION OBLIGATOIRE DE L'ARTIFACT-->
+    <!-- Le groupeid et la version sont hérité du parent -->
+    <artifactId>icasa.light.api</artifactId>
+    <packaging>bundle</packaging>
+
+    <dependencies>
+        <!--iPOJO dep -->
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.ipojo.annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.ipojo</artifactId>
+        </dependency>
+
+        <!--iCasa dep -->
+        <dependency>
+            <groupId>fr.liglab.adele.icasa</groupId>
+            <artifactId>context.api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- Ce qui va etre appelé dasn la phase de build du projet (en plus de ceux définit par défaut dans maven) -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-ipojo-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

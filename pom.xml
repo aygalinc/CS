@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2013 OW2 Chameleon
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- DESCRIPTION OBLIGATOIRE DE L'ARTIFACT-->
+    <groupId>fr.liglab.adele.icasa.teaching</groupId>
+    <artifactId>teaching.reactor</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <!-- DESCRIPTION OPTIONNELLE DE L'ARTIFACT-->
+    <name>iCasa teaching parent artifact</name>
+
+    <properties>
+
+
+        <!-- Dependencies version -->
+        <ipojo.version>1.12.1</ipojo.version>
+        <ipojo.plugin.version>1.12.1</ipojo.plugin.version>
+
+
+        <!--Plug in version-->
+        <depends-maven-plugin.version>1.2</depends-maven-plugin.version>
+        <sonar-maven-plugin>3.0.2</sonar-maven-plugin>
+        <maven-clean-plugin>3.0.0</maven-clean-plugin>
+        <maven-bundle-plugin>3.2.0</maven-bundle-plugin>
+        <maven-compiler-plugin>3.5.1</maven-compiler-plugin>
+
+        <!--iCasa version -->
+        <icasa.version>1.2.7-SNAPSHOT</icasa.version>
+    </properties>
+
+    <!-- Ici on reférence les sous modules, ceux-ci seront compilés si la compile est lancée sur le présent POM-->
+    <modules>
+        <module>icasa.light.api</module>
+        <module>icasa.light.regulator</module>
+        <module>icasa.light.manager</module>
+        <module>icasa.light.user.command</module>
+    </modules>
+
+    <!-- Définis une configuration et une version par défaut aux différentes dépendances utilisées-->
+    <!-- Attention c'est juste des configurations dans le cas où les dépendances seraient présentes-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- iPOJO -->
+            <dependency>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>org.apache.felix.ipojo</artifactId>
+                <version>${ipojo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>org.apache.felix.ipojo.annotations</artifactId>
+                <version>${ipojo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>org.apache.felix.ipojo.manipulator</artifactId>
+                <version>${ipojo.version}</version>
+            </dependency>
+
+            <!--dependance -->
+            <dependency>
+                <groupId>fr.liglab.adele.icasa</groupId>
+                <artifactId>context.api</artifactId>
+                <version>${icasa.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <!-- Définis une configuration et une version par défaut aux différents plug in utilisés-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar-maven-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>${maven-bundle-plugin}</version>
+                    <extensions>true</extensions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-ipojo-plugin</artifactId>
+                    <version>${ipojo.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>ipojo-bundle</goal>
+                            </goals>
+                            <phase>package</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin}</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <compilerVersion>1.8</compilerVersion>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+    </build>
+
+    <!--On ajoute dans cet section des repository autre que le maven central -->
+    <repositories>
+        <!-- Le dépot d'artifact où trouver les différents JAR de iCasa -->
+        <repository>
+            <id>icasa-snapshots</id>
+            <name>adele-central-release</name>
+            <url>http://repository-icasa.forge.cloudbees.com/snapshot</url>
+        </repository>
+    </repositories>
+
+</project>
