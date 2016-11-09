@@ -31,15 +31,23 @@
             <artifactId>context.api</artifactId>
         </dependency>
 
-        <!-- Additionnale iCasa dep due to the use of the @Command annotation -->
+        <!-- Additional iCasa dep due to the use of the @Command annotation -->
         <dependency>
             <groupId>fr.liglab.adele.icasa</groupId>
             <artifactId>command.handler</artifactId>
             <version>${icasa.version}</version>
         </dependency>
+
+
+        <!-- Dépendance liée à l'utilisation des services, il faut importer leurs classes pour pouvoir les utiliser -->
+        <dependency>
+            <groupId>fr.liglab.adele.icasa.teaching</groupId>
+            <artifactId>icasa.light.api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
-    <!-- Ce qui va etre appelé dasn la phase de build du projet (en plus de ceux définit par défaut dans maven) -->
+    <!-- Ce qui va etre appelé dans la phase de build du projet (en plus des étapes par défaut de maven) -->
     <build>
         <plugins>
             <plugin>

@@ -47,7 +47,7 @@
         <icasa.version>1.2.7-SNAPSHOT</icasa.version>
     </properties>
 
-    <!-- Ici on reférence les sous modules, ceux-ci seront compilés si la compile est lancée sur le présent POM-->
+    <!-- Ici on référence les sous modules, ceux-ci seront compilés si la compile est lancée à partir du présent POM-->
     <modules>
         <module>icasa.light.api</module>
         <module>icasa.light.regulator</module>

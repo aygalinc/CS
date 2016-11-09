@@ -3,8 +3,8 @@ package org.example.follow.me.manager.command;
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Instantiate;
 import org.apache.felix.ipojo.annotations.Requires;
-import org.example.follow.me.manager.FollowMeAdministration;
-import org.example.follow.me.manager.IlluminanceGoal;
+import org.example.follow.me.api.FollowMeAdministration;
+import org.example.follow.me.api.IlluminanceGoal;
 
 import fr.liglab.adele.icasa.command.handler.Command;
 import fr.liglab.adele.icasa.command.handler.CommandProvider;
@@ -33,7 +33,8 @@ public class FollowMeManagerCommandImpl {
     @Command
     public void setIlluminancePreference(String goal) {
         // The targeted goal
-        IlluminanceGoal illuminanceGoal;
+        //TODO : Fix the init
+        IlluminanceGoal illuminanceGoal = IlluminanceGoal.MEDIUM;
 
         // TODO : Here you have to convert the goal string into an illuminance
         // goal and fail if the entry is not "SOFT", "MEDIUM" or "HIGH"

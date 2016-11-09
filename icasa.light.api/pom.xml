@@ -41,6 +41,9 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
                     <instructions>
+                        <Export-Package>
+                            org.example.follow.me.api
+                        </Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
