@@ -1,2 +1,13 @@
 language: java
-mvn clean install
+
+sudo: false
+
+os:
+ - linux
+
+jdk:
+  - oraclejdk8
+
+
+after_success:
+ - mvn sonar:sonar -Dsonar.host.url=${SonarQubeURL} -Dsonar.login=${SonarQube}
