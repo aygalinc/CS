@@ -81,8 +81,19 @@
                 <groupId>fr.liglab.adele.icasa</groupId>
                 <artifactId>context.api</artifactId>
                 <version>${icasa.version}</version>
+                <exclusions>
+                	<exclusion>
+                		<groupId>org.ow2.chameleon.json</groupId>
+    					<artifactId>json-service-json.org</artifactId>
+                	</exclusion>
+                </exclusions>
             </dependency>
+            
+            
+            
         </dependencies>
+        
+        
     </dependencyManagement>
 
     <build>
@@ -142,5 +153,7 @@
             <url>http://repository-icasa.forge.cloudbees.com/snapshot</url>
         </repository>
     </repositories>
+    
+    
 
 </project>

@@ -31,6 +31,15 @@
             <groupId>fr.liglab.adele.icasa</groupId>
             <artifactId>context.api</artifactId>
         </dependency>
+        
+        
+        <!-- Dépendance liée à l'utilisation des services, il faut importer leurs classes pour pouvoir les utiliser -->
+        <dependency>
+            <groupId>fr.liglab.adele.icasa.teaching</groupId>
+            <artifactId>icasa.light.api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
     </dependencies>
 
     <!-- Ce qui va etre appelé dasn la phase de build du projet (en plus de ceux définit par défaut dans maven) -->
