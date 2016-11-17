@@ -76,11 +76,18 @@
                 <version>${ipojo.version}</version>
             </dependency>
 
-            <!--dependance -->
+            <!--dépendance -->
             <dependency>
                 <groupId>fr.liglab.adele.icasa</groupId>
                 <artifactId>context.api</artifactId>
                 <version>${icasa.version}</version>
+                <!--Pour que ça compile à l'esisar, on a besoin d'exclure certaines dépendances transitives pour pas que maven télécharge tout l'internet -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.ow2.chameleon.json</groupId>
+                        <artifactId>json-service-json.org</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
