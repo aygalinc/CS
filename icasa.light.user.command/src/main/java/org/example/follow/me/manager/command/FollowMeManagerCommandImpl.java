@@ -33,11 +33,22 @@ public class FollowMeManagerCommandImpl {
     @Command
     public void setIlluminancePreference(String goal) {
         // The targeted goal
-        //TODO : Fix the init
+        // Fix the init
         IlluminanceGoal illuminanceGoal = IlluminanceGoal.MEDIUM;
-
-        // TODO : Here you have to convert the goal string into an illuminance
+        // Here you have to convert the goal string into an illuminance
         // goal and fail if the entry is not "SOFT", "MEDIUM" or "HIGH"
+        
+        if( goal.compareToIgnoreCase("SOFT") == 0 ){
+        	illuminanceGoal = IlluminanceGoal.SOFT;
+        }else if ( goal.compareToIgnoreCase("MEDIUM") == 0  ){
+        	illuminanceGoal = IlluminanceGoal.MEDIUM;
+        }else if ( goal.compareToIgnoreCase("FULL") == 0  ){
+        	illuminanceGoal = IlluminanceGoal.FULL;
+        }else{
+        	// error
+        	System.out.println("Only SOFT, MEDIUM or FULL is tolerated");
+        	return;
+        }
 
         //call the administration service to configure it :
         m_administrationService.setIlluminancePreference(illuminanceGoal);
@@ -45,8 +56,21 @@ public class FollowMeManagerCommandImpl {
 
     @Command
     public void getIlluminancePreference(){
-        //TODO : implement the command that print the current value of the goal
-        System.out.println("The illuminance goal is "); //...
+        //implement the command that print the current value of the goal
+        System.out.print("The illuminance goal is "); //...
+        switch (m_administrationService.getIlluminancePreference()) {
+		case FULL:
+			System.out.println("FULL.");
+			break;
+		case SOFT:
+			System.out.println("SOFT.");
+			break;
+		case MEDIUM:
+			System.out.println("MEDIUM.");
+			break;
+		default:
+			break;
+		}
     }
 
 }
