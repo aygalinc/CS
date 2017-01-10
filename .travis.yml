@@ -8,7 +8,7 @@ os:
 jdk:
   - oraclejdk8
   
-  mvn clean install
+
 
 
 after_success:
